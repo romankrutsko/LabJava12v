@@ -70,10 +70,14 @@ public class AirPort {
 
     @Override
     public String toString() {
+        Date date = deparutreTime.getTime();
         return "Airport: " +
                 "destination: " + destination +
-                ", departure time: " + deparutreTime.toString() +
-                ", day: " + dayOfWeek.toString();
+                ", flight number: " + flightNumber +
+                ", type of plane: " + planeType.toString().toLowerCase() +
+                ", plane number: " + planeNumber +
+                ", departure time: " + date.toString() +
+                ", day: " + dayOfWeek.toString().toLowerCase();
 
     }
 
