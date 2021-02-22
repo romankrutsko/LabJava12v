@@ -9,9 +9,10 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-
         AirPortController controller = new AirPortController();
-        controller.proceedProgram();
+        DataForController data = new DataForController();
+        Sort sort = new Sort();
+        controller.proceedProgram(data, sort);
     }
 
 

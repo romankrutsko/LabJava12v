@@ -32,7 +32,7 @@ public class Input {
         return scanner.next();
     }
 
-    public int inputHour() {
+    public static int inputHour() {
         System.out.println("Enter hour");
         while (!scanner.hasNextInt()) {
             System.out.println("Please, enter int value");
@@ -41,7 +41,7 @@ public class Input {
         return scanner.nextInt();
     }
 
-    public int inputMinute() {
+    public static int inputMinute() {
         System.out.println("Enter minute");
         while (!scanner.hasNextInt()) {
             System.out.println("Please, enter int value");

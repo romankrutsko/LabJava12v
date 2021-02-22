@@ -1,45 +1,35 @@
 package com.company.AirPort;
 
-import java.util.*;
-
 public class AirPortController {
 
-    private int check = 0;
-    public AirPortView airPortView = new AirPortView();
-    private Input input = new Input();
-    private Init init = new Init();
-    private List<AirPort> list = new ArrayList<>();
-    public void proceedProgram() {
-        init.init(list);
-        while (check !=5 && check >= 0 && check <= 5) {
-            airPortView.defaultMessages();
-            check = input.inputScanner();
-            switch (check) {
+    public void proceedProgram(DataForController data, Sort sort) {
+        AirPort[] array = data.init.init(data.airPorts);
+        while (data.check !=5 && data.check >= 0 && data.check <= 5) {
+            data.airPortView.defaultMessages();
+            data.check = Input.inputScanner();
+            switch (data.check) {
                 case 1: {
-                    String destination = input.inputDestination();
-                    List<AirPort> destinationSorted = getFlightsToDestination(list, destination);
-                    airPortView.printAirPort(destinationSorted);
-                    check = 0;
+                    String destination = Input.inputDestination();
+                    AirPort[] arrayAirPort = sort.getFlightsToDestination(array, destination);
+                    data.airPortView.printAirPort(arrayAirPort);
                     break;
                 }
                 case 2: {
-                    String day = input.inputDay();
-                    List<AirPort> daySorted = getFlightToDay(list, day);
-                    airPortView.printAirPort(daySorted);
-                    check = 0;
+                    String day = Input.inputDay();
+                    AirPort[] daySorted = sort.getFlightToDay(array, day);
+                    data.airPortView.printAirPort(daySorted);
                     break;
                 }
                 case 3: {
                     String day = Input.inputDay();
-                    int hour = input.inputHour();
-                    int minute = input.inputMinute();
-                    List<AirPort> dayAndHourSorted = getFlightToDayAndHour(list, day, hour, minute);
-                    airPortView.printAirPort(dayAndHourSorted);
-                    check = 0;
+                    int hour = Input.inputHour();
+                    int minute = Input.inputMinute();
+                    AirPort[] dayAndHourSorted = sort.getFlightToDayAndHour(array, day, hour, minute);
+                    data.airPortView.printAirPort(dayAndHourSorted);
                     break;
                 }
                 case 4: {
-                    airPortView.printAirPort(list);
+                    data.airPortView.printAirPort(array);
                     break;
                 }
                 case 5: {
@@ -48,41 +38,5 @@ public class AirPortController {
                 }
             }
         }
-
-    }
-
-    private List<AirPort> getFlightsToDestination(List<AirPort> list, String destination) {
-        List<AirPort> destinationSorted = new ArrayList<>();
-        for (AirPort airPort : list) {
-            if (airPort.getDestination().equals(destination)) {
-                destinationSorted.add(airPort);
-            }
-        }
-        return destinationSorted;
-    }
-
-    private List<AirPort> getFlightToDay(List<AirPort> list, String day) {
-        List<AirPort> daySorted = new ArrayList<>();
-
-        for (AirPort airPort : list) {
-            if (day.toUpperCase().equals(airPort.getDayOfWeek().toString())) {
-                daySorted.add(airPort);
-            }
-        }
-        return daySorted;
-    }
-
-    private List<AirPort> getFlightToDayAndHour(List<AirPort> list, String day, int hours, int minutes) {
-        List<AirPort> dayAndHourSorted = new ArrayList<>();
-
-        for (AirPort airPort : list) {
-            Date date = airPort.getDeparutreTime().getTime();
-            date.setHours(hours);
-            date.setMinutes(minutes);
-            if (day.toUpperCase().equals(airPort.getDayOfWeek().toString()) && airPort.getDeparutreTime().getTime().after(date)) {
-                dayAndHourSorted.add(airPort);
-            }
-        }
-        return dayAndHourSorted;
     }
 }

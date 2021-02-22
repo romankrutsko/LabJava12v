@@ -6,9 +6,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Init {
-    public void init(List<AirPort> list) {
-        AirPortView view = new AirPortView();
-
+    public AirPort[] init(AirPort[] array) {
         Calendar calendar = new GregorianCalendar(2021, Calendar.JANUARY, 12,12, 15);
         AirPort airPortTernopil = new AirPort("Ternopil", "1", PlaneType.CIVIL, calendar, DayOfWeek.TUESDAY, "11111");
 
@@ -39,15 +37,8 @@ public class Init {
         calendar = new GregorianCalendar(2021, Calendar.JANUARY, 21, 10, 30);
         AirPort airPortParis = new AirPort("Paris", "10", PlaneType.WAR, calendar, DayOfWeek.THURSDAY, "1010");
 
-        list.add(airPortTernopil);
-        list.add(airPortKyiv);
-        list.add(airPortWarsaw);
-        list.add(airPortTernopil2);
-        list.add(airPortLviv);
-        list.add(airPortDonetsk);
-        list.add(airPortOdessa);
-        list.add(airPortLondon);
-        list.add(airPortBerlin);
-        list.add(airPortParis);
+        return new AirPort[] {
+                airPortTernopil, airPortKyiv, airPortWarsaw, airPortTernopil2, airPortLviv, airPortDonetsk, airPortOdessa,airPortLondon, airPortBerlin, airPortParis
+        };
     }
 }

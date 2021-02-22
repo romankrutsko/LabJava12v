@@ -3,16 +3,19 @@ package com.company.AirPort;
 import java.util.List;
 
 public class AirPortView {
-    public void printAirPort(List<AirPort> list) {
-        if (list.isEmpty()) {
-            System.out.println("No data");
+    public void printAirPort(AirPort[] array) {
+        if (array == null) {
+            emptyMessage();
             return;
         }
-        for (AirPort airPort : list) {
+        for (AirPort airPort : array) {
             System.out.println(airPort.toString());
         }
     }
 
+    public void emptyMessage() {
+        System.out.println("No data");
+    }
     public void defaultMessages() {
         System.out.println();
         System.out.println("Choose one variant");
