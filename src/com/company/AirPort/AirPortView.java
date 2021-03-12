@@ -1,7 +1,5 @@
 package com.company.AirPort;
 
-import java.util.List;
-
 public class AirPortView {
     public void printAirPort(AirPort[] array) {
         if (array == null) {
@@ -13,9 +11,26 @@ public class AirPortView {
         }
     }
 
-    public void emptyMessage() {
-        System.out.println("No data");
+    public void invalidValidationMessage() {
+        System.out.println("Invalid variant, enter number from 1 to 5");
     }
+
+    public void invalidHourMessage() {
+        System.out.println("Invalid hour range, enter number from 0 to 24");
+    }
+
+    public void invalidMinuteMessage() {
+        System.out.println("Invalid minute range, enter number from 0 to 60");
+    }
+
+    public void invalidStringMessage() {
+        System.out.println("Invalid entered value, enter string value");
+    }
+
+    public void emptyMessage() {
+        System.out.println("No data for given info");
+    }
+
     public void defaultMessages() {
         System.out.println();
         System.out.println("Choose one variant");

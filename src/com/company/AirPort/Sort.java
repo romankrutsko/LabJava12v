@@ -1,5 +1,7 @@
 package com.company.AirPort;
 
+import com.company.AirPort.exceptions.AirPortException;
+
 import java.util.Date;
 
 public class Sort {
@@ -7,7 +9,7 @@ public class Sort {
         int count = 0;
         AirPort[] destinationSorted;
         for (AirPort airPort: array) {
-            if (airPort.getDestination().equals(destination)) {
+            if (airPort.getDestination().equalsIgnoreCase(destination)) {
                 count++;
             }
         }
@@ -17,7 +19,7 @@ public class Sort {
         destinationSorted = new AirPort[count];
         count = 0;
         for (AirPort airPort:array) {
-            if (airPort.getDestination().equals(destination)) {
+            if (airPort.getDestination().equalsIgnoreCase(destination)) {
                 destinationSorted[count] = airPort;
                 count++;
             }

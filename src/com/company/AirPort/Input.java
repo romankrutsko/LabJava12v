@@ -1,5 +1,7 @@
 package com.company.AirPort;
 
+import com.company.AirPort.exceptions.AirPortException;
+
 import java.util.Scanner;
 
 public class Input {
