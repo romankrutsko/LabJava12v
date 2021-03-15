@@ -7,7 +7,10 @@ public class AirPortException extends RuntimeException{
     }
 
     public enum Error {
-        INVALID_VARIANT("Invalid variant");
+        INVALID_VARIANT("Invalid variant"),
+        INVALID_STRING("Invalid string value"),
+        INVALID_HOUR("Invalid hour"),
+        INVALID_MINUTE("Invalid minute");
 
         private String message;
 

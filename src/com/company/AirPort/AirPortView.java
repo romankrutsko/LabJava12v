@@ -16,11 +16,11 @@ public class AirPortView {
     }
 
     public void invalidHourMessage() {
-        System.out.println("Invalid hour range, enter number from 0 to 24");
+        System.out.println("Invalid hour range, enter number from 0 to 23");
     }
 
     public void invalidMinuteMessage() {
-        System.out.println("Invalid minute range, enter number from 0 to 60");
+        System.out.println("Invalid minute range, enter number from 0 to 59");
     }
 
     public void invalidStringMessage() {
