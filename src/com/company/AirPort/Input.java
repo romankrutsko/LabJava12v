@@ -51,4 +51,14 @@ public class Input {
         }
         return scanner.nextInt();
     }
+
+    public static String inputString() {
+        System.out.println("Do you want to write result to a file? if yes type y");
+        return scanner.next();
+    }
+
+    public static String inputReader() {
+        System.out.println("Do you want to read from file?");
+        return scanner.next();
+    }
 }

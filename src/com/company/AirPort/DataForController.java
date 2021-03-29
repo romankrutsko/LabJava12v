@@ -8,4 +8,5 @@ public class DataForController {
     public final Init init = new Init();
     public final AirPort[] airPorts = new AirPort[10];
     public Validator validator = new Validator();
+    public Writer writer = new Writer();
 }

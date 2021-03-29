@@ -1,9 +1,18 @@
 package com.company.AirPort;
 
+import java.io.IOException;
+
 public class AirPortController {
 
-    public void proceedProgram(DataForController data, Sort sort) {
-        AirPort[] array = data.init.init(data.airPorts);
+    public void proceedProgram(DataForController data, Sort sort) throws IOException {
+        AirPort[] array;
+        String yesNoRead = Input.inputReader();
+        if (yesNoRead.equals("y")) {
+            Reader reader = new Reader();
+            array = reader.readToInit();
+        } else {
+            array = data.init.init(data.airPorts);
+        }
         while (data.check !=5 && data.check >= 0 && data.check <= 5) {
             data.airPortView.defaultMessages();
             data.check = Input.inputScanner();
@@ -18,6 +27,10 @@ public class AirPortController {
                     }
                     AirPort[] arrayAirPort = sort.getFlightsToDestination(array, destination);
                     data.airPortView.printAirPort(arrayAirPort);
+                    String yesNo = Input.inputString();
+                    if (yesNo.equals("y")) {
+                        data.writer.write(arrayAirPort);
+                    }
                     break;
                 }
                 case 2: {
@@ -27,6 +40,10 @@ public class AirPortController {
                     }
                     AirPort[] daySorted = sort.getFlightToDay(array, day);
                     data.airPortView.printAirPort(daySorted);
+                    String yesNo = Input.inputString();
+                    if (yesNo.equals("y")) {
+                        data.writer.write(daySorted);
+                    }
                     break;
                 }
                 case 3: {
@@ -44,10 +61,18 @@ public class AirPortController {
                     }
                     AirPort[] dayAndHourSorted = sort.getFlightToDayAndHour(array, day, hour, minute);
                     data.airPortView.printAirPort(dayAndHourSorted);
+                    String yesNo = Input.inputString();
+                    if (yesNo.equals("y")) {
+                        data.writer.write(dayAndHourSorted);
+                    }
                     break;
                 }
                 case 4: {
                     data.airPortView.printAirPort(array);
+                    String yesNo = Input.inputString();
+                    if (yesNo.equals("y")) {
+                        data.writer.write(array);
+                    }
                     break;
                 }
                 case 5: {
