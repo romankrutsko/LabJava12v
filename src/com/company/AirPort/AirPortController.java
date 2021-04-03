@@ -5,14 +5,8 @@ import java.io.IOException;
 public class AirPortController {
 
     public void proceedProgram(DataForController data, Sort sort) throws IOException {
-        AirPort[] array;
         String yesNoRead = Input.inputReader();
-        if (yesNoRead.equals("y")) {
-            Reader reader = new Reader();
-            array = reader.readToInit();
-        } else {
-            array = data.init.init(data.airPorts);
-        }
+        AirPort[] array = data.initFile(yesNoRead);
         while (data.check !=5 && data.check >= 0 && data.check <= 5) {
             data.airPortView.defaultMessages();
             data.check = Input.inputScanner();

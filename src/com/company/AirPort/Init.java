@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Init {
-    public AirPort[] init(AirPort[] array) {
+    public AirPort[] init() {
         Calendar calendar = new GregorianCalendar(2021, Calendar.JANUARY, 12,12, 15);
         AirPort airPortTernopil = new AirPort("Ternopil", "1", PlaneType.CIVIL, calendar, DayOfWeek.TUESDAY, "11111");
 

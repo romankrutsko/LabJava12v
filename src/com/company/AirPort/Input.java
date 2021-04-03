@@ -53,12 +53,12 @@ public class Input {
     }
 
     public static String inputString() {
-        System.out.println("Do you want to write result to a file? if yes type y");
+        System.out.println("Do you want to write result to a file? If yes type y!");
         return scanner.next();
     }
 
     public static String inputReader() {
-        System.out.println("Do you want to read from file?");
+        System.out.println("Do you want to read from file? If yes type y!");
         return scanner.next();
     }
 }

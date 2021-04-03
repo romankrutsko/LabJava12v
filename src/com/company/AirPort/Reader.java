@@ -1,13 +1,25 @@
 package com.company.AirPort;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Reader {
+    public boolean checkPresenceAndEmptyness() {
+        File file = new File("C:\\Users\\user\\Desktop\\ReadInit.txt");
+        if (!file.exists() || file.length() == 0) {
+            System.out.println("No such file to init or is empty!");
+            return false;
+        }
+        System.out.println("File is ready to init from!");
+        return true;
+    }
+
     public AirPort[] readToInit() throws IOException {
+        System.out.println("Init from file!");
         BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\ReadInit.txt"));
         AirPort[] airPorts = new AirPort[10];
         String in;
@@ -19,6 +31,7 @@ public class Reader {
             airPorts[i] = airPort;
             i++;
         }
+        bufferedReader.close();
         return airPorts;
     }
 
