@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -19,9 +22,11 @@ public class Reader {
     }
 
     public AirPort[] readToInit() throws IOException {
+        Path file = Paths.get("C:\\Users\\user\\Desktop\\ReadInit.txt");
+        long c = Files.lines(file).count();
         System.out.println("Init from file!");
         BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\ReadInit.txt"));
-        AirPort[] airPorts = new AirPort[10];
+        AirPort[] airPorts = new AirPort[(int) c];
         String in;
         int i = 0;
         while ((in = bufferedReader.readLine()) != null) {
@@ -32,6 +37,34 @@ public class Reader {
             i++;
         }
         bufferedReader.close();
+        return airPorts;
+    }
+
+    public AirPort[] readToInitWithEmpties() throws IOException {
+        System.out.println("Init from file with empties!");
+        String count;
+        String in;
+        int countLines = 0;
+        int i = 0;
+        try (BufferedReader bufferedReaderInit = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\ReadInit.txt"))) {
+            while ((count = bufferedReaderInit.readLine()) != null) {
+                if (!count.equals("")) {
+                    countLines++;
+                }
+            }
+        }
+        AirPort[] airPorts = new AirPort[countLines];
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\user\\Desktop\\ReadInit.txt"))) {
+            while ((in = bufferedReader.readLine()) != null) {
+                if (!in.equals("")) {
+                    String[] words = in.split(",");
+
+                    AirPort airPort = new AirPort(words[0], words[1], planeType(words[2]), time(words[3]), dayOfWeek(words[4]), words[5]);
+                    airPorts[i] = airPort;
+                    i++;
+                }
+            }
+        }
         return airPorts;
     }
 

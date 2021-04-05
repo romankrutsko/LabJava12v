@@ -17,6 +17,7 @@ public class DataForController {
             Reader reader = new Reader();
             boolean presence = reader.checkPresenceAndEmptyness();
             if (presence) {
+//                return array = reader.readToInitWithEmpties();
                 return array = reader.readToInit();
             } else {
                 System.out.println("Unfortunately we should init not from file");
